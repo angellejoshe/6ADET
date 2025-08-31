@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mystic_pick/screens/hover_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Main home screen to displays F8HUB game selection interface
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
+        // Background image decoration
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/bg.png'),
@@ -21,6 +23,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // Main title with pixel styled font from Google Fonts
               Text(
                 'F8HUB',
                 style: GoogleFonts.pressStart2p(
@@ -29,12 +32,15 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 50),
+              // Game selection grid layout
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  // First row of games
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // F8BALL - unlocked
                       Column(
                         children: [
                           HoverBox(imagePath: 'assets/8ball.png'),
@@ -49,6 +55,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(width: 20),
+                      // F8COOKIE - locked with overlay
                       Column(
                         children: [
                           HoverBox(
@@ -69,9 +76,11 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 20),
+                  // Second row of games
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // F8DICE - locked with overlay
                       Column(
                         children: [
                           HoverBox(
@@ -90,6 +99,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(width: 20),
+                      // F8TD (Truth or Dare) - locked with overlay
                       Column(
                         children: [
                           HoverBox(
@@ -118,3 +128,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
