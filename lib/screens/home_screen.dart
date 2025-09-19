@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mystic_pick/screens/hover.dart';
+import 'package:mystic_pick/screens/request.dart';
 import 'package:mystic_pick/screens/hover_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mystic_pick/screens/mystic_sphere.dart';
@@ -76,11 +78,7 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(width: 20),
                       Column(
                         children: [
-                          HoverBox(
-                            imagePath: 'assets/cookie.png',
-                            imageLock: 'assets/lock.png',
-                            overlay: true,
-                          ),
+                          HoverBox(imagePath: 'assets/cookie.png'),
                           SizedBox(height: 10),
                           Text(
                             'F8COOKIE',
@@ -99,11 +97,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          HoverBox(
-                            imagePath: 'assets/dice.png',
-                            imageLock: 'assets/lock.png',
-                            overlay: true,
-                          ),
+                          HoverBox(imagePath: 'assets/dice.png'),
                           SizedBox(height: 10),
                           Text(
                             'F8DICE',
@@ -117,11 +111,7 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(width: 20),
                       Column(
                         children: [
-                          HoverBox(
-                            imagePath: 'assets/TorD.png',
-                            imageLock: 'assets/lock.png',
-                            overlay: true,
-                          ),
+                          HoverBox(imagePath: 'assets/TorD.png'),
                           SizedBox(height: 10),
                           Text(
                             'F8TD',
@@ -133,6 +123,63 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ],
+                  ),
+                  SizedBox(height: 20),
+                  Hover(
+                    child: Stack(
+                      children: [
+                        Text(
+                          "ABOUT US",
+                          style: GoogleFonts.pressStart2p(
+                            fontSize: 13,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 4
+                              ..color = const Color(0xFF001f3f),
+                          ),
+                        ),
+                        Text(
+                          "ABOUT US",
+                          style: GoogleFonts.pressStart2p(
+                            fontSize: 13,
+                            color: const Color(0xFFead8b1),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Hover(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const F8Request(),
+                        ),
+                      );
+                    },
+
+                    child: Stack(
+                      children: [
+                        Text(
+                          "F8REQUEST",
+                          style: GoogleFonts.pressStart2p(
+                            fontSize: 13,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = 4
+                              ..color = const Color(0xFF001f3f),
+                          ),
+                        ),
+                        Text(
+                          "F8REQUEST",
+                          style: GoogleFonts.pressStart2p(
+                            fontSize: 13,
+                            color: const Color(0xFFead8b1),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
