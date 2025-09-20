@@ -65,13 +65,28 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             HoverBox(imagePath: 'assets/8ball.png'),
                             SizedBox(height: 10),
-                            Text(
-                              'F8BALL',
-                              style: GoogleFonts.pressStart2p(
-                                color: Color(0xFFead8b1),
-                                fontSize: 20,
+                            Stack(
+                              children: [
+                                Text(
+                                  'F8BALL',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.pressStart2p(
+                                    fontSize: 20,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 8
+                                      ..color = Color(0xFF285c78),
+                                  ),
+                                ),
+                                Text(
+                                  'F8BALL',
+                                  style: GoogleFonts.pressStart2p(
+                                  color: Color(0xFFead8b1),
+                                  fontSize: 20,
                               ),
                             ),
+                              ],
+                            )
                           ],
                         ),
                       ),
@@ -80,13 +95,28 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           HoverBox(imagePath: 'assets/cookie.png'),
                           SizedBox(height: 10),
-                          Text(
-                            'F8COOKIE',
-                            style: GoogleFonts.pressStart2p(
-                              color: Color(0xFFead8b1),
-                              fontSize: 20,
+                          Stack(
+                              children: [
+                                Text(
+                                  'F8COOKIE',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.pressStart2p(
+                                    fontSize: 20,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 8
+                                      ..color = Color(0xFF285c78),
+                                  ),
+                                ),
+                                Text(
+                                  'F8COOKIE',
+                                  style: GoogleFonts.pressStart2p(
+                                  color: Color(0xFFead8b1),
+                                  fontSize: 20,
+                              ),
                             ),
-                          ),
+                              ],
+                            )
                         ],
                       ),
                     ],
@@ -99,13 +129,28 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           HoverBox(imagePath: 'assets/dice.png'),
                           SizedBox(height: 10),
-                          Text(
-                            'F8DICE',
-                            style: GoogleFonts.pressStart2p(
-                              color: Color(0xFFead8b1),
-                              fontSize: 20,
+                          Stack(
+                              children: [
+                                Text(
+                                  'F8DICE',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.pressStart2p(
+                                    fontSize: 20,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 8
+                                      ..color = Color(0xFF285c78),
+                                  ),
+                                ),
+                                Text(
+                                  'F8DICE',
+                                  style: GoogleFonts.pressStart2p(
+                                  color: Color(0xFFead8b1),
+                                  fontSize: 20,
+                              ),
                             ),
-                          ),
+                              ],
+                            )
                         ],
                       ),
                       SizedBox(width: 20),
@@ -113,13 +158,28 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           HoverBox(imagePath: 'assets/TorD.png'),
                           SizedBox(height: 10),
-                          Text(
-                            'F8TD',
-                            style: GoogleFonts.pressStart2p(
-                              color: Color(0xFFead8b1),
-                              fontSize: 20,
+                          Stack(
+                              children: [
+                                Text(
+                                  'F8TD',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.pressStart2p(
+                                    fontSize: 20,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 8
+                                      ..color = Color(0xFF285c78),
+                                  ),
+                                ),
+                                Text(
+                                  'F8TD',
+                                  style: GoogleFonts.pressStart2p(
+                                  color: Color(0xFFead8b1),
+                                  fontSize: 20,
+                              ),
                             ),
-                          ),
+                              ],
+                            )
                         ],
                       ),
                     ],
@@ -190,3 +250,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
