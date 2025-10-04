@@ -4,6 +4,8 @@ import 'package:mystic_pick/screens/request.dart';
 import 'package:mystic_pick/screens/hover_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mystic_pick/screens/mystic_sphere.dart';
+import 'package:mystic_pick/screens/main_menu.dart';
+import 'package:mystic_pick/screens/info_page.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -33,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                       foreground: Paint()
                         ..style = PaintingStyle.stroke
                         ..strokeWidth = 12
-                        ..color = Color(0xFF285c78),
+                        ..color = Color(0xFF6a9ab0),
                     ),
                   ),
                   Text(
@@ -74,19 +76,19 @@ class HomeScreen extends StatelessWidget {
                                     fontSize: 20,
                                     foreground: Paint()
                                       ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 8
-                                      ..color = Color(0xFF285c78),
+                                      ..strokeWidth = 6
+                                      ..color = Color(0xFF6a9ab0),
                                   ),
                                 ),
                                 Text(
                                   'F8BALL',
                                   style: GoogleFonts.pressStart2p(
-                                  color: Color(0xFFead8b1),
-                                  fontSize: 20,
-                              ),
-                            ),
+                                    color: Color(0xFFead8b1),
+                                    fontSize: 20,
+                                  ),
+                                ),
                               ],
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -96,27 +98,27 @@ class HomeScreen extends StatelessWidget {
                           HoverBox(imagePath: 'assets/cookie.png'),
                           SizedBox(height: 10),
                           Stack(
-                              children: [
-                                Text(
-                                  'F8COOKIE',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.pressStart2p(
-                                    fontSize: 20,
-                                    foreground: Paint()
-                                      ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 8
-                                      ..color = Color(0xFF285c78),
-                                  ),
+                            children: [
+                              Text(
+                                'F8COOKIE',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.pressStart2p(
+                                  fontSize: 20,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 6
+                                    ..color = Color(0xFF6a9ab0),
                                 ),
-                                Text(
-                                  'F8COOKIE',
-                                  style: GoogleFonts.pressStart2p(
+                              ),
+                              Text(
+                                'F8COOKIE',
+                                style: GoogleFonts.pressStart2p(
                                   color: Color(0xFFead8b1),
                                   fontSize: 20,
+                                ),
                               ),
-                            ),
-                              ],
-                            )
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -130,35 +132,44 @@ class HomeScreen extends StatelessWidget {
                           HoverBox(imagePath: 'assets/dice.png'),
                           SizedBox(height: 10),
                           Stack(
-                              children: [
-                                Text(
-                                  'F8DICE',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.pressStart2p(
-                                    fontSize: 20,
-                                    foreground: Paint()
-                                      ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 8
-                                      ..color = Color(0xFF285c78),
-                                  ),
+                            children: [
+                              Text(
+                                'F8DICE',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.pressStart2p(
+                                  fontSize: 20,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 6
+                                    ..color = Color(0xFF6a9ab0),
                                 ),
-                                Text(
-                                  'F8DICE',
-                                  style: GoogleFonts.pressStart2p(
+                              ),
+                              Text(
+                                'F8DICE',
+                                style: GoogleFonts.pressStart2p(
                                   color: Color(0xFFead8b1),
                                   fontSize: 20,
+                                ),
                               ),
-                            ),
-                              ],
-                            )
+                            ],
+                          ),
                         ],
                       ),
                       SizedBox(width: 20),
-                      Column(
-                        children: [
-                          HoverBox(imagePath: 'assets/TorD.png'),
-                          SizedBox(height: 10),
-                          Stack(
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MainMenuPage(),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            HoverBox(imagePath: 'assets/TorD.png'),
+                            SizedBox(height: 10),
+                            Stack(
                               children: [
                                 Text(
                                   'F8TD',
@@ -167,25 +178,34 @@ class HomeScreen extends StatelessWidget {
                                     fontSize: 20,
                                     foreground: Paint()
                                       ..style = PaintingStyle.stroke
-                                      ..strokeWidth = 8
-                                      ..color = Color(0xFF285c78),
+                                      ..strokeWidth = 6
+                                      ..color = Color(0xFF6a9ab0),
                                   ),
                                 ),
                                 Text(
                                   'F8TD',
                                   style: GoogleFonts.pressStart2p(
-                                  color: Color(0xFFead8b1),
-                                  fontSize: 20,
-                              ),
-                            ),
+                                    color: Color(0xFFead8b1),
+                                    fontSize: 20,
+                                  ),
+                                ),
                               ],
-                            )
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                   SizedBox(height: 20),
                   Hover(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const InfoPage(),
+                        ),
+                      );
+                    },
                     child: Stack(
                       children: [
                         Text(
@@ -250,4 +270,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
