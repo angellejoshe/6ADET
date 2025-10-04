@@ -4,12 +4,12 @@ import 'package:mystic_pick/screens/hover.dart';
 
 class F8Request extends StatefulWidget {
   const F8Request({super.key});
-
   @override
   State<F8Request> createState() => _F8RequestState();
 }
 
 class _F8RequestState extends State<F8Request> {
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +64,7 @@ class _F8RequestState extends State<F8Request> {
               Stack(
                 children: [
                   Text(
-                    'Request a game  for us to develop next!',
+                    'Request a game for us to develop next!',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.handjet(
                       fontSize: MediaQuery.of(context).size.width * 0.04,
@@ -75,7 +75,7 @@ class _F8RequestState extends State<F8Request> {
                     ),
                   ),
                   Text(
-                    'Request a game  for us to develop next!',
+                    'Request a game for us to develop next!',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.handjet(
                       fontSize: MediaQuery.of(context).size.width * 0.04,
@@ -93,21 +93,29 @@ class _F8RequestState extends State<F8Request> {
                   gradient: const LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
-                    colors: [Color(0xFF1B3B51), Color(0xFF3a6d8c)],
+                    colors: [Color(0xFF001f3f), Color(0xFF02376c)],
                   ),
-                  border: Border.all(color: Colors.black, width: 1.5),
                   borderRadius: BorderRadius.circular(15),
                   boxShadow: const [
                     BoxShadow(color: Color(0xFFEAD8B1), offset: Offset(6, 6)),
                   ],
                 ),
                 child: TextField(
+                  controller: _controller,
                   style: GoogleFonts.handjet(color: Colors.white),
                   maxLines: null,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "Type here...",
                     hintStyle: TextStyle(color: Colors.white54),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.clear, color: Color(0xFFEAD8B1)),
+                      onPressed: () {
+                        setState(() {
+                          _controller.clear();
+                        });
+                      },
+                    ),
                   ),
                 ),
               ),
