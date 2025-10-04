@@ -29,7 +29,7 @@ class _HoverState extends State<Hover> {
             gradient: const LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              colors: [Color(0xFF1B3B51), Color(0xFF3a6d8c)],
+              colors: [Color(0xFF001f3f), Color(0xFF02376c)],
             ),
             border: Border.all(color: Color(0xFF3a6d8c), width: 2),
             borderRadius: BorderRadius.circular(15),
