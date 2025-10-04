@@ -25,7 +25,7 @@ class _HoverBoxState extends State<HoverBox> {
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
-            colors: <Color>[Color(0xFF1B3B51), Color(0xFF3a6d8c)],
+            colors: <Color>[Color(0xFF001f3f), Color(0xFF3a6d8c)],
           ),
           border: Border.all(color: Color(0xFF3a6d8c), width: 2),
           borderRadius: BorderRadius.circular(30),
