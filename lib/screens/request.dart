@@ -1,15 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:mystic_pick/screens/hover.dart';
 
 class F8Request extends StatefulWidget {
   const F8Request({super.key});
+
   @override
   State<F8Request> createState() => _F8RequestState();
 }
 
 class _F8RequestState extends State<F8Request> {
   final TextEditingController _controller = TextEditingController();
+  bool _isSubmitted = false;
+  bool _isSending = false;
+
+  final String serviceId = 'service_up9wf3l';
+  final String templateId = 'template_6094otm';
+  final String publicKey = 'UHNvNrnoj1Y552AGg';
+
+  Future<void> sendEmail(String message) async {
+    final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+    final response = await http.post(
+      url,
+      headers: {
+        'origin': 'http://localhost:55438',
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'service_id': serviceId,
+        'template_id': templateId,
+        'user_id': publicKey,
+        'template_params': {'message': message},
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      debugPrint('✅ Email sent successfully!');
+    } else {
+      debugPrint('❌ Failed to send email: ${response.body}');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,11 +50,9 @@ class _F8RequestState extends State<F8Request> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back),
-          color: Color(0xFFead8b1),
+          color: const Color(0xFFead8b1),
         ),
       ),
       body: Container(
@@ -36,8 +67,8 @@ class _F8RequestState extends State<F8Request> {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // ===== Title =====
               Stack(
                 children: [
                   Text(
@@ -48,7 +79,7 @@ class _F8RequestState extends State<F8Request> {
                       foreground: Paint()
                         ..style = PaintingStyle.stroke
                         ..strokeWidth = 8
-                        ..color = Color(0xFF001f3f),
+                        ..color = const Color(0xFF001f3f),
                     ),
                   ),
                   Text(
@@ -61,6 +92,8 @@ class _F8RequestState extends State<F8Request> {
                   ),
                 ],
               ),
+
+              // ===== Subtitle =====
               Stack(
                 children: [
                   Text(
@@ -71,7 +104,7 @@ class _F8RequestState extends State<F8Request> {
                       foreground: Paint()
                         ..style = PaintingStyle.stroke
                         ..strokeWidth = 3
-                        ..color = Color(0xFF001f3f),
+                        ..color = const Color(0xFF001f3f),
                     ),
                   ),
                   Text(
@@ -84,7 +117,10 @@ class _F8RequestState extends State<F8Request> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+
+              const SizedBox(height: 20),
+
+              // ===== Input Box / Thank You Message =====
               Container(
                 padding: const EdgeInsets.all(10),
                 width: 300,
@@ -100,49 +136,77 @@ class _F8RequestState extends State<F8Request> {
                     BoxShadow(color: Color(0xFFEAD8B1), offset: Offset(6, 6)),
                   ],
                 ),
-                child: TextField(
-                  controller: _controller,
-                  style: GoogleFonts.handjet(color: Colors.white),
-                  maxLines: null,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Type here...",
-                    hintStyle: TextStyle(color: Colors.white54),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.clear, color: Color(0xFFEAD8B1)),
-                      onPressed: () {
+                child: _isSubmitted
+                    ? Center(
+                        child: Text(
+                          "THANK YOU FOR SUBMITTING A REQUEST!",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.handjet(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      )
+                    : TextField(
+                        controller: _controller,
+                        style: GoogleFonts.handjet(color: Colors.white),
+                        maxLines: null,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Type here...",
+                          hintStyle: const TextStyle(color: Colors.white54),
+                          suffixIcon: IconButton(
+                            icon: const Icon(
+                              Icons.clear,
+                              color: Color(0xFFEAD8B1),
+                            ),
+                            onPressed: () => _controller.clear(),
+                          ),
+                        ),
+                      ),
+              ),
+
+              const SizedBox(height: 40),
+
+              _isSending
+                  ? const CircularProgressIndicator(color: Colors.white)
+                  : TextButton(
+                      onPressed: () async {
+                        if (_controller.text.trim().isEmpty) return;
+                        setState(() => _isSending = true);
+
+                        await sendEmail(_controller.text.trim());
+
                         setState(() {
+                          _isSubmitted = true;
+                          _isSending = false;
                           _controller.clear();
                         });
                       },
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 40),
-              Hover(
-                child: Stack(
-                  children: [
-                    Text(
-                      "SUBMIT",
-                      style: GoogleFonts.pressStart2p(
-                        fontSize: 13,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 4
-                          ..color = const Color(0xFF001f3f),
+                      child: Hover(
+                        child: Stack(
+                          children: [
+                            Text(
+                              "SUBMIT",
+                              style: GoogleFonts.pressStart2p(
+                                fontSize: 13,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 4
+                                  ..color = const Color(0xFF001f3f),
+                              ),
+                            ),
+                            Text(
+                              "SUBMIT",
+                              style: GoogleFonts.pressStart2p(
+                                fontSize: 13,
+                                color: const Color(0xFFead8b1),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    Text(
-                      "SUBMIT",
-                      style: GoogleFonts.pressStart2p(
-                        fontSize: 13,
-                        color: const Color(0xFFead8b1),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
