@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mystic_pick/screens/dice.dart';
 import 'package:mystic_pick/screens/hover.dart';
 import 'package:mystic_pick/screens/request.dart';
 import 'package:mystic_pick/screens/hover_box.dart';
@@ -6,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mystic_pick/screens/mystic_sphere.dart';
 import 'package:mystic_pick/screens/main_menu.dart';
 import 'package:mystic_pick/screens/info_page.dart';
+import 'package:mystic_pick/screens/fortune_cookie.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -93,33 +95,43 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: 20),
-                      Column(
-                        children: [
-                          HoverBox(imagePath: 'assets/cookie.png'),
-                          SizedBox(height: 10),
-                          Stack(
-                            children: [
-                              Text(
-                                'F8COOKIE',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.pressStart2p(
-                                  fontSize: 20,
-                                  foreground: Paint()
-                                    ..style = PaintingStyle.stroke
-                                    ..strokeWidth = 6
-                                    ..color = Color(0xFF6a9ab0),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const FortuneCookie(),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            HoverBox(imagePath: 'assets/cookie.png'),
+                            SizedBox(height: 10),
+                            Stack(
+                              children: [
+                                Text(
+                                  'F8COOKIE',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.pressStart2p(
+                                    fontSize: 20,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 6
+                                      ..color = Color(0xFF6a9ab0),
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'F8COOKIE',
-                                style: GoogleFonts.pressStart2p(
-                                  color: Color(0xFFead8b1),
-                                  fontSize: 20,
+                                Text(
+                                  'F8COOKIE',
+                                  style: GoogleFonts.pressStart2p(
+                                    color: Color(0xFFead8b1),
+                                    fontSize: 20,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -127,33 +139,43 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Column(
-                        children: [
-                          HoverBox(imagePath: 'assets/dice.png'),
-                          SizedBox(height: 10),
-                          Stack(
-                            children: [
-                              Text(
-                                'F8DICE',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.pressStart2p(
-                                  fontSize: 20,
-                                  foreground: Paint()
-                                    ..style = PaintingStyle.stroke
-                                    ..strokeWidth = 6
-                                    ..color = Color(0xFF6a9ab0),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Dice(),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            HoverBox(imagePath: 'assets/dice.png'),
+                            SizedBox(height: 10),
+                            Stack(
+                              children: [
+                                Text(
+                                  'F8DICE',
+                                  textAlign: TextAlign.center,
+                                  style: GoogleFonts.pressStart2p(
+                                    fontSize: 20,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 6
+                                      ..color = Color(0xFF6a9ab0),
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'F8DICE',
-                                style: GoogleFonts.pressStart2p(
-                                  color: Color(0xFFead8b1),
-                                  fontSize: 20,
+                                Text(
+                                  'F8DICE',
+                                  style: GoogleFonts.pressStart2p(
+                                    color: Color(0xFFead8b1),
+                                    fontSize: 20,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(width: 20),
                       GestureDetector(
